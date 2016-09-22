@@ -106,3 +106,5 @@ CMakeLists.txt
 JLinkLog.txt
 JLinkSettings.ini
 /Objects/
+/Listings/
+*.uvguix.*

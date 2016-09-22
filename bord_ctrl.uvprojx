@@ -88,7 +88,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -436,6 +436,21 @@
               <FileType>1</FileType>
               <FilePath>.\src\delay.c</FilePath>
             </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\key.c</FilePath>
+            </File>
+            <File>
+              <FileName>plug_det.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\plug_det.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -575,6 +590,21 @@
               <FileName>power_ctrl.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\power_ctrl.h</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\pwm.h</FilePath>
+            </File>
+            <File>
+              <FileName>key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\key.h</FilePath>
+            </File>
+            <File>
+              <FileName>plug_det.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\plug_det.h</FilePath>
             </File>
           </Files>
         </Group>

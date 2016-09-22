@@ -1,3 +1,6 @@
+/**
+ * 电源控制
+ */
 
 #ifndef _POWER_CTRL_H_
 #define _POWER_CTRL_H_
@@ -8,17 +11,19 @@
 void power_ctrl_init(void);
 
 /**
- * 获取boot键激活状态
- * @return
- *     1 -- 激活
- *     0 -- 未激活
+ * 低功耗配置
  */
-int power_ctrl_is_boot_key_active(void);
+void power_ctrl_low_consume_set(void);
 
 /**
- * 引导系统启动
+ * 电源控制启动
  */
-void power_ctrl_boot_on(void);
+void power_ctrl_on(void);
+
+/**
+ * 电源控制关闭
+ */
+void power_ctrl_off(void);
 
 #endif
 
