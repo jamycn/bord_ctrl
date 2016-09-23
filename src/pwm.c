@@ -45,7 +45,7 @@ static void Timer_Configuration(void)
 
     NVIC_Configuration();
     
-//    TIM_Cmd(TIMER_PWM, DISABLE); //Í£Ö¹Ê±ÖÓ
+    RCC_APB2PeriphClockCmd(RCC_TIMER_PWM, DISABLE);
 }
 
 /**
@@ -85,11 +85,13 @@ static void pwm_out(int nCount)
 
     sg_nPwmCnt = nCount * 2;
 
+    RCC_APB2PeriphClockCmd(RCC_TIMER_PWM, ENABLE);
     TIM_Cmd(TIMER_PWM, ENABLE);
     
     while (sg_nPwmCnt > 0);
     
     TIM_Cmd(TIMER_PWM, DISABLE);    
+    RCC_APB2PeriphClockCmd(RCC_TIMER_PWM, DISABLE);
 } 
 
 /**

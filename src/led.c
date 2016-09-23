@@ -41,8 +41,8 @@ static void Timer_Configuration(void)
     TIM_ITConfig(TIMER_LED,TIM_IT_Update,ENABLE); 
 
     NVIC_Configuration();
-    
-//    TIM_Cmd(LED_TIMER, ENABLE); //开启时钟
+
+    RCC_APB1PeriphClockCmd(RCC_TIMER_LED, DISABLE);
 }
 
 /**
@@ -63,6 +63,8 @@ void led_init(void)
     GPIO_Init(GPIO_PORT_LED1, &GPIO_InitStructure);
     GPIO_ResetBits(GPIO_PORT_LED1, GPIO_PIN_LED1);
 
+    sg_nIsInited = 1;
+
     Timer_Configuration();
 }
 
@@ -74,7 +76,6 @@ void led_power_on(void)
     if (!sg_nIsInited)
     {
         led_init();
-        sg_nIsInited = 1;
     }
 
     GPIO_SetBits(GPIO_PORT_LED1, GPIO_PIN_LED1);
@@ -88,7 +89,6 @@ void led_power_off(void)
     if (!sg_nIsInited)
     {
         led_init();
-        sg_nIsInited = 1;
     }
 
     GPIO_ResetBits(GPIO_PORT_LED1, GPIO_PIN_LED1);
@@ -102,10 +102,10 @@ void led_power_twinkle_on(void)
     if (!sg_nIsInited)
     {
         led_init();
-        sg_nIsInited = 1;
     }
 
     led_power_on();
+    RCC_APB1PeriphClockCmd(RCC_TIMER_LED, ENABLE);
     TIM_Cmd(TIMER_LED, ENABLE); //开启时钟
 }
 
@@ -117,6 +117,7 @@ void led_power_twinkle_off(void)
     if (sg_nIsInited)
     {
         TIM_Cmd(TIMER_LED, DISABLE); //关闭时钟
+        RCC_APB1PeriphClockCmd(RCC_TIMER_LED, DISABLE);
         led_power_off();
     }
 }

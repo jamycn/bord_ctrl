@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     int nPlugState;
     int nPowerOnMode = 0; // 0 -- 未启动；1 -- 电源键启动模式；2 -- 外线插入启动模式。
 
-    power_ctrl_low_consume_set(); //低功耗配置
+     power_ctrl_low_consume_set(); //低功耗配置
 
     key_init();
     power_ctrl_init();

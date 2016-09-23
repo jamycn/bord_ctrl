@@ -40,14 +40,16 @@ static void Timer_Configuration(void)
 
     NVIC_Configuration();
     
-//    TIM_Cmd(LED_TIMER, ENABLE); //开启时钟
+    RCC_APB1PeriphClockCmd(RCC_TIMER_DELAY, DISABLE);
 }
 
 /**
  * 精确延迟初始化
  */
-static void delay_init(void)
+void delay_init(void)
 {
+    delay_inited = 1;
+	
     Timer_Configuration();
 }
 
@@ -60,16 +62,17 @@ void delay_ms(int nDelay_ms)
     if (!delay_inited)
     {
         delay_init();
-        delay_inited = 1;
     }
 
     sg_nDelay_ms = nDelay_ms;
 
+    RCC_APB1PeriphClockCmd(RCC_TIMER_DELAY, ENABLE);
     TIM_Cmd(TIMER_DELAY, ENABLE);
     
     while (sg_nDelay_ms > 0);
     
     TIM_Cmd(TIMER_DELAY, DISABLE);
+    RCC_APB1PeriphClockCmd(RCC_TIMER_DELAY, DISABLE);
 } 
 
 void TIM14_IRQHandler(void)

@@ -6,6 +6,11 @@
 #define _DELAY_H_
 
 /**
+ * 精确延迟初始化
+ */
+void delay_init(void);
+
+/**
  * 精确延迟(ms级)
  * @param 
  */
